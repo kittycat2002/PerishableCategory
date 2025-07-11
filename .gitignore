@@ -1,0 +1,7 @@
+obj
+.vs
+*.dds
+Thumbs.db
+.idea
+*.DotSettings.user
+_PublisherPlus.xml

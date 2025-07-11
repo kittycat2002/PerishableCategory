@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingCategoryDef>
+		<defName>Perishables</defName>
+		<label>perishables</label>
+		<parent>Root</parent>
+	</ThingCategoryDef>
+</Defs>
