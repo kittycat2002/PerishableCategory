@@ -23,10 +23,9 @@ public static class ThingCategoryDefGenerator_Perishable
 			}
 		}
 
-		foreach (ThingCategoryDef thingCategoryDef in createdDefs.Values)
-		{
-			yield return thingCategoryDef;
-		}
+		return DefDatabase<ThingCategoryDef>.AllDefs
+			.Intersect(createdDefs.Keys)
+			.Select(def => createdDefs[def]).ToList(); // Making sure the elements are ordered correctly
 	}
 
 	private static ThingCategoryDef BaseThingCategoryDef(ThingCategoryDef baseDef, bool hotReload = false)
@@ -42,6 +41,7 @@ public static class ThingCategoryDefGenerator_Perishable
 			: new ThingCategoryDef();
 		thingCategoryDef.defName = defName;
 		thingCategoryDef.label = baseDef.label;
+		thingCategoryDef.childSpecialFilters = baseDef.childSpecialFilters;
 		thingCategoryDef.parent = baseDef.parent == ThingCategoryDefOf.Root || baseDef.parent is null
 			? CategoryDefOf.Perishables
 			: BaseThingCategoryDef(baseDef.parent);
